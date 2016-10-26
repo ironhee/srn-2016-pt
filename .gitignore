@@ -3,6 +3,5 @@ node_modules
 *.snap
 lib
 coverage
-build
 .DS_Store
 .env
