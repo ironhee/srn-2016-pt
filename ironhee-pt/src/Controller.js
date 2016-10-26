@@ -11,6 +11,8 @@ class Controller extends Component {
       style: props.defaultStyle || 'simple',
       slideLength: props.children.props.children.length
     }
+    this.onClick = this.onClick.bind(this)
+    this.onKeyDown = this.onKeyDown.bind(this)
     this.onNextSlide = this.onNextSlide.bind(this)
     this.onPrevSlide = this.onPrevSlide.bind(this)
   }
@@ -27,6 +29,22 @@ class Controller extends Component {
     assert(fp.isInteger(slideIndex))
     assert(slideIndex >= 0 || slideIndex < slideLength, `slide out of range (should 0 <= slide < ${slideLength})`)
     this.setState({ slideIndex })
+  }
+
+  onClick (e) {
+    e.preventDefault()
+    this.$input.focus()
+  }
+
+  onKeyDown (e) {
+    switch (e.key) {
+      case 'ArrowLeft':
+        this.onPrevSlide()
+        break
+      case 'ArrowRight':
+        this.onNextSlide()
+        break
+    }
   }
 
   onNextSlide () {
@@ -53,7 +71,14 @@ class Controller extends Component {
       <div
         className='ironhee-pt__controller'
         style={controllerStyle}
+        onClick={this.onClick}
+        onKeyDown={this.onKeyDown}
       >
+        <input
+          type='text'
+          ref={(c) => { this.$input = c }}
+          style={hiddenInputStyle}
+        />
         <children.type
           {...children.props}
           slideIndex={slideIndex}
@@ -64,16 +89,22 @@ class Controller extends Component {
           style={overlayStyle}
         >
           <span
-            style={prevButtonStyles.base}
+            style={[
+              buttonStyles.base,
+              prevButtonStyles.base
+            ]}
             onClick={this.onPrevSlide}
           >
-            prev
+            &lt;
           </span>
           <span
-            style={nextButtonStyles.base}
+            style={[
+              buttonStyles.base,
+              nextButtonStyles.base
+            ]}
             onClick={this.onNextSlide}
           >
-            next
+            &gt;
           </span>
           <div
             style={indexStyle.base}
@@ -104,6 +135,17 @@ const controllerStyle = {
   position: 'relative'
 }
 
+const hiddenInputStyle = {
+  width: 0,
+  height: 0,
+  position: 'absolute',
+  outline: 'none',
+  border: 'none',
+  margin: 0,
+  padding: 0,
+  boxShadow: 'none'
+}
+
 const overlayStyle = {
   top: 0,
   left: 0,
@@ -112,19 +154,25 @@ const overlayStyle = {
   height: '100%'
 }
 
+const buttonStyles = {
+  base: {
+    position: 'absolute',
+    color: '#555',
+    fontSize: '3em'
+  }
+}
+
 const prevButtonStyles = {
   base: {
     top: '50%',
-    left: 0,
-    position: 'absolute'
+    left: 0
   }
 }
 
 const nextButtonStyles = {
   base: {
     top: '50%',
-    right: 0,
-    position: 'absolute'
+    right: 0
   }
 }
 

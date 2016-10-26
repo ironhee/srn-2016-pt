@@ -2,7 +2,7 @@ import React from 'react'
 import Radium from 'radium'
 
 const Slide = ({ children }, { style }) => (
-  <h1
+  <h2
     className='ironhee-pt__title'
     style={[
       styles.base,
@@ -10,7 +10,7 @@ const Slide = ({ children }, { style }) => (
     ]}
   >
     { children }
-  </h1>
+  </h2>
 )
 
 Slide.contextTypes = {
@@ -25,7 +25,7 @@ const styles = {
     padding: 0
   },
   simple: {
-    margin: '0 20px',
+    margin: '0 20px 30px 20px',
     padding: 0,
     fontSize: '5em',
     fontFamilly: 'helvetica',

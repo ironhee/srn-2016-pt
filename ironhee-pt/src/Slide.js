@@ -27,10 +27,12 @@ export default Radium(Slide)
 const styles = {
   base: {
     width: '100%',
-    height: '100%'
+    height: '100%',
+    boxSizing: 'border-box'
   },
   simple: {
-    background: '#eee'
+    background: '#eee',
+    padding: '40px'
   },
   // status
   inactive: {
