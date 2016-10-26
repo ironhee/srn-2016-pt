@@ -3,16 +3,16 @@ import renderer from 'react-test-renderer'
 import Controller from '../Controller'
 import Presentation from '../Presentation'
 import Slide from '../Slide'
+import Header from '../Header'
 
 it('renders', () => {
-  const component = renderer.create(
+  renderer.create(
     <Controller>
       <Presentation>
-        <Slide />
-        <Slide />
+        <Slide>
+          <Header>hello world</Header>
+        </Slide>
       </Presentation>
     </Controller>
   )
-  const tree = component.toJSON()
-  expect(tree.children.length).toBe(2)
 })

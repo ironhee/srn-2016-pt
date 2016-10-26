@@ -19,8 +19,7 @@ Slide.propTypes = {
 }
 
 Slide.contextTypes = {
-  style: React.PropTypes.string.isRequired,
-  slideIndex: React.PropTypes.number.isRequired
+  style: React.PropTypes.string.isRequired
 }
 
 export default Radium(Slide)
@@ -31,7 +30,7 @@ const styles = {
     height: '100%'
   },
   simple: {
-    background: 'grey'
+    background: '#eee'
   },
   // status
   inactive: {

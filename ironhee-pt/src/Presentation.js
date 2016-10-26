@@ -9,7 +9,7 @@ const Presentation = ({ children }, { style, slideIndex }) => (
       styles[style]
     ]}
   >
-    { children.map((child, index) =>
+    { [].concat(children).map((child, index) =>
       <child.type
         key={index}
         {...child.props}
@@ -28,6 +28,7 @@ export default Radium(Presentation)
 
 const styles = {
   base: {
+    boxSizing: 'border-box',
     width: '100%',
     height: '100%'
   },
