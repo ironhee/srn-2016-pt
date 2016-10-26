@@ -7,7 +7,7 @@ class Controller extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      slide: props.defaultSlide || 0,
+      slideIndex: props.defaultSlide || 0,
       style: props.defaultStyle || 'simple',
       slideLength: props.children.props.children.length
     }
@@ -15,24 +15,31 @@ class Controller extends Component {
     this.onPrevSlide = this.onPrevSlide.bind(this)
   }
 
-  selectSlide (slide) {
+  getChildContext () {
+    return {
+      style: this.state.style,
+      slideIndex: this.state.slideIndex
+    }
+  }
+
+  selectSlide (slideIndex) {
     const { slideLength } = this.state
-    assert(fp.isInteger(slide))
-    assert(slide >= 0 || slide < slideLength, `slide out of range (should 0 <= slide < ${slideLength})`)
-    this.setState({ slide })
+    assert(fp.isInteger(slideIndex))
+    assert(slideIndex >= 0 || slideIndex < slideLength, `slide out of range (should 0 <= slide < ${slideLength})`)
+    this.setState({ slideIndex })
   }
 
   onNextSlide () {
-    const { slide, slideLength } = this.state
-    const nextSlide = slide + 1
+    const { slideIndex, slideLength } = this.state
+    const nextSlide = slideIndex + 1
     if (nextSlide < slideLength) {
       this.selectSlide(nextSlide)
     }
   }
 
   onPrevSlide () {
-    const { slide } = this.state
-    const prevSlide = slide - 1
+    const { slideIndex } = this.state
+    const prevSlide = slideIndex - 1
     if (prevSlide >= 0) {
       this.selectSlide(prevSlide)
     }
@@ -40,7 +47,7 @@ class Controller extends Component {
 
   render () {
     const { children } = this.props
-    const { slide, slideLength, style } = this.state
+    const { slideIndex, slideLength, style } = this.state
 
     return (
       <div
@@ -49,7 +56,7 @@ class Controller extends Component {
       >
         <children.type
           {...children.props}
-          slide={slide}
+          slideIndex={slideIndex}
           style={style}
         />
         <div
@@ -71,12 +78,22 @@ class Controller extends Component {
           <div
             style={indexStyle.base}
           >
-            { slide + 1 } / { slideLength }
+            { slideIndex + 1 } / { slideLength }
           </div>
         </div>
       </div>
     )
   }
+}
+
+Controller.propTypes = {
+  defaultSlide: React.PropTypes.number,
+  defaultStyle: React.PropTypes.string
+}
+
+Controller.childContextTypes = {
+  style: React.PropTypes.string.isRequired,
+  slideIndex: React.PropTypes.number.isRequired
 }
 
 export default Radium(Controller)

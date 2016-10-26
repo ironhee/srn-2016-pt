@@ -1,23 +1,26 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Radium from 'radium'
 
-class Slide extends Component {
-  render () {
-    const { isActive, style } = this.props
+const Slide = ({ children, isActive }, { style }) => (
+  <div
+    className='ironhee-pt__slide'
+    style={[
+      styles.base,
+      styles[style],
+      ...isActive ? [] : [styles.inactive]
+    ]}
+  >
+    { children }
+  </div>
+)
 
-    return (
-      <div
-        className='ironhee-pt__slide'
-        style={[
-          styles.base,
-          styles[style],
-          ...isActive ? [] : [styles.inactive]
-        ]}
-      >
-        { this.props.children }
-      </div>
-    )
-  }
+Slide.propTypes = {
+  isActive: React.PropTypes.bool
+}
+
+Slide.contextTypes = {
+  style: React.PropTypes.string.isRequired,
+  slideIndex: React.PropTypes.number.isRequired
 }
 
 export default Radium(Slide)

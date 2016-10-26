@@ -1,33 +1,27 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Radium from 'radium'
 
-class Presentation extends Component {
-  render () {
-    const { children, slide, style = 'simple' } = this.props
+const Presentation = ({ children }, { style, slideIndex }) => (
+  <div
+    className='ironhee-pt__presentation'
+    style={[
+      styles.base,
+      styles[style]
+    ]}
+  >
+    { children.map((child, index) =>
+      <child.type
+        key={index}
+        {...child.props}
+        isActive={slideIndex === index}
+      />
+    ) }
+  </div>
+)
 
-    return (
-      <div
-        className='ironhee-pt__presentation'
-        style={[
-          styles.base,
-          styles[style]
-        ]}
-      >
-        { children ? children.map((child, index) =>
-          <child.type
-            key={index}
-            {...child.props}
-            style={style}
-            isActive={slide === index}
-          />
-        ) : null }
-      </div>
-    )
-  }
-}
-
-Presentation.defaultProps = {
-  slide: 0
+Presentation.contextTypes = {
+  style: React.PropTypes.string.isRequired,
+  slideIndex: React.PropTypes.number.isRequired
 }
 
 export default Radium(Presentation)
