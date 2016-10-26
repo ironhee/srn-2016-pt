@@ -1,0 +1,21 @@
+{
+  "name": "srn-2016-pt",
+  "version": "0.0.0",
+  "private": true,
+  "engines": {
+    "node": "6.8.1"
+  },
+  "devDependencies": {
+    "pre-commit": "^1.1.3"
+  },
+  "scripts": {
+    "build": "cd srn-2016-pt && npm run build",
+    "mv-to-docs": "mv srn-2016-pt/build docs",
+    "add-docs-to-git": "git add -f docs"
+  },
+  "pre-commit": [
+    "build",
+    "mv-to-docs",
+    "add-docs-to-git"
+  ]
+}
