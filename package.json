@@ -6,9 +6,9 @@
     "node": "6.8.1"
   },
   "scripts": {
-    "start": "pushstate-server client/build $PORT",
+    "start": "pushstate-server srn-2016-pt/build 80",
     "build": "cd srn-2016-pt && npm run build",
-    "add-build-to-git": "git add -f client/build"
+    "add-build-to-git": "git add -f srn-2016-pt/build"
   },
   "pre-commit": [
     "build",
