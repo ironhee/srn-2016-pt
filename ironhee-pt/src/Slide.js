@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
-import radium from 'radium'
+import Radium from 'radium'
 
 class Slide extends Component {
   render () {
     return (
-      <div className='ironhee-pt__slide' />
+      <div className='ironhee-pt__slide'>
+        { this.props.children }
+      </div>
     )
   }
 }
 
-export default radium(Slide)
+export default Radium(Slide)

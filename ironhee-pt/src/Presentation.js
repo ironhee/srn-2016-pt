@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import radium from 'radium'
-import Slide from './Slide'
+import Radium from 'radium'
 
 class Presentation extends Component {
   render () {
@@ -13,8 +12,4 @@ class Presentation extends Component {
   }
 }
 
-Presentation.propTypes = {
-  children: React.PropTypes.arrayOf(Slide)
-}
-
-export default radium(Presentation)
+export default Radium(Presentation)
