@@ -26,9 +26,9 @@ export default Radium(Slide)
 
 const styles = {
   base: {
+    boxSizing: 'border-box',
     width: '100%',
-    height: '100%',
-    boxSizing: 'border-box'
+    height: '100%'
   },
   simple: {
     background: '#eee',

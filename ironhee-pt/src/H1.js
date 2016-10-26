@@ -1,9 +1,9 @@
 import React from 'react'
 import Radium from 'radium'
 
-const Slide = ({ children }, { style }) => (
+const H1 = ({ children }, { style }) => (
   <h2
-    className='ironhee-pt__title'
+    className='ironhee-pt__h1'
     style={[
       styles.base,
       styles[style]
@@ -13,11 +13,11 @@ const Slide = ({ children }, { style }) => (
   </h2>
 )
 
-Slide.contextTypes = {
+H1.contextTypes = {
   style: React.PropTypes.string.isRequired
 }
 
-export default Radium(Slide)
+export default Radium(H1)
 
 const styles = {
   base: {
@@ -28,7 +28,7 @@ const styles = {
     margin: '0 20px 30px 20px',
     padding: 0,
     fontSize: '5em',
-    fontFamilly: 'helvetica',
+    fontFamilly: '바른고딕 helvetica',
     borderBottom: '1px solid #555'
   }
 }

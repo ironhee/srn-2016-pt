@@ -3,14 +3,14 @@ import renderer from 'react-test-renderer'
 import Controller from '../Controller'
 import Presentation from '../Presentation'
 import Slide from '../Slide'
-import Header from '../Header'
+import H2 from '../H2'
 
 it('renders', () => {
   renderer.create(
     <Controller>
       <Presentation>
         <Slide>
-          <Header>hello world</Header>
+          <H2>hello world</H2>
         </Slide>
       </Presentation>
     </Controller>

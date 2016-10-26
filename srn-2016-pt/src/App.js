@@ -1,12 +1,14 @@
 import React from 'react'
-import './App.css'
 import {
   Controller,
   Presentation,
   Slide,
   Cover,
-  Header,
-  Paragraph
+  H1,
+  H2,
+  P,
+  Ul,
+  Li
 } from '../../ironhee-pt'
 
 const App = () => {
@@ -23,19 +25,28 @@ const App = () => {
       <Controller>
         <Presentation>
           <Slide>
-            <Cover>Hello world!</Cover>
+            <Cover>
+              <H1>쓸데없이 발표 어렵게 하기</H1>
+              <H2>2016 Sunrin Network Day - Ironhee</H2>
+            </Cover>
           </Slide>
           <Slide>
-            <Header>Hello world!</Header>
-            <Paragraph>
-              This is the page 1
-            </Paragraph>
+            <H1>발표하기 위해 필요한 것</H1>
+            <Ul>
+              <Li>발표 도구</Li>
+              <Li>발표 내용</Li>
+            </Ul>
           </Slide>
           <Slide>
-            <Header>Bye world!</Header>
-            <Paragraph>
-              This is the page 2
-            </Paragraph>
+            <Cover>
+              <H1>Q&A</H1>
+            </Cover>
+          </Slide>
+          <Slide>
+            <iframe
+              style={{ width: '100%', height: '100%', border: 'none' }}
+              src='http://tts-srn.herokuapp.com/#/c/ironhee-bot-test'
+            />
           </Slide>
         </Presentation>
       </Controller>

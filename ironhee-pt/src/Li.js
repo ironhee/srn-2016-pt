@@ -2,15 +2,15 @@ import React from 'react'
 import Radium from 'radium'
 
 const Cover = ({ children }, { style }) => (
-  <div
-    className='ironhee-pt__cover'
+  <li
+    className='ironhee-pt__li'
     style={[
       styles.base,
       styles[style]
     ]}
   >
     { children }
-  </div>
+  </li>
 )
 
 Cover.contextTypes = {
@@ -21,13 +21,10 @@ export default Radium(Cover)
 
 const styles = {
   base: {
-    boxSizing: 'border-box',
-    width: '100%',
-    height: '100%'
   },
   simple: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center'
+    fontSize: '2em',
+    marginLeft: '1em',
+    marginBottom: '1em'
   }
 }

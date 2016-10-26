@@ -74,43 +74,40 @@ class Controller extends Component {
         onClick={this.onClick}
         onKeyDown={this.onKeyDown}
       >
-        <input
-          type='text'
-          ref={(c) => { this.$input = c }}
-          style={hiddenInputStyle}
-        />
         <children.type
           {...children.props}
           slideIndex={slideIndex}
           style={style}
         />
+        <input
+          type='text'
+          ref={(c) => { this.$input = c }}
+          style={hiddenInputStyle}
+        />
         <div
-          className='ironhee-pt__controller__overlay'
-          style={overlayStyle}
+          style={[
+            buttonStyles.base,
+            prevButtonStyles.base
+          ]}
+          key='prev'
+          onClick={this.onPrevSlide}
         >
-          <span
-            style={[
-              buttonStyles.base,
-              prevButtonStyles.base
-            ]}
-            onClick={this.onPrevSlide}
-          >
-            &lt;
-          </span>
-          <span
-            style={[
-              buttonStyles.base,
-              nextButtonStyles.base
-            ]}
-            onClick={this.onNextSlide}
-          >
-            &gt;
-          </span>
-          <div
-            style={indexStyle.base}
-          >
-            { slideIndex + 1 } / { slideLength }
-          </div>
+          prev
+        </div>
+        <div
+          style={[
+            buttonStyles.base,
+            nextButtonStyles.base
+          ]}
+          key='next'
+          onClick={this.onNextSlide}
+        >
+          next
+        </div>
+        <div
+          style={indexStyle.base}
+        >
+          { slideIndex + 1 } / { slideLength }
         </div>
       </div>
     )
@@ -130,6 +127,7 @@ Controller.childContextTypes = {
 export default Radium(Controller)
 
 const controllerStyle = {
+  boxSizing: 'border-box',
   width: '100%',
   height: '100%',
   position: 'relative'
@@ -146,32 +144,33 @@ const hiddenInputStyle = {
   boxShadow: 'none'
 }
 
-const overlayStyle = {
-  top: 0,
-  left: 0,
-  position: 'absolute',
-  width: '100%',
-  height: '100%'
-}
-
 const buttonStyles = {
   base: {
     position: 'absolute',
-    color: '#555',
-    fontSize: '3em'
+    top: 0,
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    height: '100%',
+    padding: '0 10px',
+    color: '#fff',
+    backgroundColor: '#555',
+    fontSize: '2em',
+    opacity: '0',
+    ':hover': {
+      opacity: '0.5'
+    }
   }
 }
 
 const prevButtonStyles = {
   base: {
-    top: '50%',
     left: 0
   }
 }
 
 const nextButtonStyles = {
   base: {
-    top: '50%',
     right: 0
   }
 }
@@ -181,6 +180,7 @@ const indexStyle = {
     bottom: 0,
     width: '100%',
     textAlign: 'center',
-    position: 'absolute'
+    position: 'absolute',
+    fontSize: '1.5em'
   }
 }
