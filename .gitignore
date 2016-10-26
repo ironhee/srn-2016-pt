@@ -2,3 +2,7 @@ node_modules
 *.log
 *.snap
 lib
+coverage
+build
+.DS_Store
+.env
