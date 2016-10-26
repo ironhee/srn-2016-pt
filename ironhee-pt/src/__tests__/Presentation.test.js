@@ -4,11 +4,9 @@ import Presentation from '../Presentation'
 import Slide from '../Slide'
 
 it('renders', () => {
-  const component = renderer.create(
+  renderer.create(
     <Presentation />
   )
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
 })
 
 it('renders with slides', () => {
@@ -19,5 +17,5 @@ it('renders with slides', () => {
     </Presentation>
   )
   const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
+  expect(tree.children.length).toBe(2)
 })
