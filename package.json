@@ -1,23 +1,46 @@
 {
   "name": "srn-2016-pt",
-  "version": "0.0.0",
-  "private": true,
+  "version": "0.1.0",
   "engines": {
     "node": "6.8.1"
   },
+  "private": true,
+  "devDependencies": {
+    "babel-jest": "^16.0.0",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-react": "^6.16.0",
+    "jest": "^16.0.2",
+    "react-scripts": "0.7.0",
+    "react-test-renderer": "^15.3.2",
+    "pre-commit": "^1.1.3"
+  },
+  "dependencies": {
+    "ironpt": "0.0.1",
+    "pushstate-server": "^2.1.0",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2"
+  },
   "scripts": {
-    "start": "pushstate-server srn-2016-pt/build $PORT",
-    "build": "cd srn-2016-pt && npm run build",
-    "add-build-to-git": "git add -f srn-2016-pt/build"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "start-production": "pushstate-server build $PORT",
+    "add-build-to-git": "git add -f build"
   },
   "pre-commit": [
     "build",
     "add-build-to-git"
   ],
-  "dependencies": {
-    "pushstate-server": "^2.1.0"
-  },
-  "devDependencies": {
-    "pre-commit": "^1.1.3"
+  "standard": {
+    "globals": [
+      "expect",
+      "describe",
+      "it",
+      "before",
+      "beforeEach",
+      "after",
+      "afterEach"
+    ]
   }
 }

@@ -6,10 +6,9 @@ import {
   Cover,
   H1,
   H2,
-  P,
   Ul,
   Li
-} from '../../ironhee-pt'
+} from 'ironpt'
 
 const App = () => {
   const style = {
@@ -45,7 +44,7 @@ const App = () => {
           <Slide>
             <iframe
               style={{ width: '100%', height: '100%', border: 'none' }}
-              src='http://tts-srn.herokuapp.com/#/c/ironhee-bot-test'
+              src='https://tts-srn.herokuapp.com/#/c/ironhee-bot-test'
             />
           </Slide>
         </Presentation>

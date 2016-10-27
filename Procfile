@@ -1,2 +1,1 @@
-web: npm start
-*.log
+web: npm start-production
