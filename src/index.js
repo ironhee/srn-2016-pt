@@ -171,6 +171,26 @@ export default Todo
 
         <Slide>
           <Cover>
+            <H2>부추긴 사람</H2>
+          </Cover>
+        </Slide>
+
+        <Slide>
+          <Cover>
+            <img
+              style={{
+                display: 'inline-block',
+                height: 500,
+                margin: 'auto'
+              }}
+              src={require('./ayun.png')}
+              alt=''
+            />
+          </Cover>
+        </Slide>
+
+        <Slide>
+          <Cover>
             <H1>Q&A</H1>
           </Cover>
         </Slide>
