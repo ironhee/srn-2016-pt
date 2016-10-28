@@ -7,7 +7,8 @@ import {
   H1,
   H2,
   Ul,
-  Li
+  Li,
+  simple
 } from 'ironpt'
 
 const App = () => {
@@ -22,7 +23,7 @@ const App = () => {
       style={style}
     >
       <Controller>
-        <Presentation>
+        <Presentation style={simple}>
           <Slide>
             <Cover>
               <H1>쓸데없이 발표 어렵게 하기</H1>
